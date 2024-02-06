@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://doobqokobqj3w"]
+
+[ext_resource type="Script" path="res://scenes/menus/pause/pause_menu.gd" id="1_j361r"]
+[ext_resource type="PackedScene" uid="uid://bbjn6b5dbkl45" path="res://scenes/menus/settings/settings_menu.tscn" id="2_wp41h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4fc0"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="PauseMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4fc0")
+script = ExtResource("1_j361r")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Center"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Center/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Buttons" type="VBoxContainer" parent="Center/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Center/PanelContainer/MarginContainer/Buttons"]
+layout_mode = 2
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="Center/PanelContainer/MarginContainer/Buttons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitMainMenuButton" type="Button" parent="Center/PanelContainer/MarginContainer/Buttons"]
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="QuitDesktopButton" type="Button" parent="Center/PanelContainer/MarginContainer/Buttons"]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_wp41h")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/QuitMainMenuButton" to="." method="_on_quit_main_menu_button_pressed"]
+[connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]

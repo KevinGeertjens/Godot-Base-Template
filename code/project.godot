@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="GameTemplate"
-run/main_scene="res://scenes/menus/main_menu/main_menu.tscn"
+run/main_scene="res://scenes/menus/main/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+
+[autoload]
+
+ChangeScene="*res://autoload/change_scene.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
