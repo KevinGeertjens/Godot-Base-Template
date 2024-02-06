@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbjn6b5dbkl45"]
+[gd_scene load_steps=6 format=3 uid="uid://bbjn6b5dbkl45"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings/settings_menu.gd" id="1_iul8f"]
+[ext_resource type="Script" path="res://scenes/menus/settings/graphics_settings.gd" id="2_m5edi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5odnb"]
-bg_color = Color(0, 0, 0, 0.392157)
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpc6p"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0upi"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [node name="SettingsMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -14,6 +21,115 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5odnb")
 script = ExtResource("1_iul8f")
 
-[node name="Label" type="Label" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 2
-text = "Test"
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="Margin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xpc6p")
+
+[node name="Margin" type="MarginContainer" parent="Margin/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/PanelContainer/Margin"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExitButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Header"]
+custom_minimum_size = Vector2(49, 49)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h0upi")
+text = "X"
+
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Margin/PanelContainer/Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Graphics" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_m5edi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="WindowSizeLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Window Size"
+
+[node name="WindowSizeButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 7
+selected = 0
+popup/item_0/text = "640x360"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1600x900"
+popup/item_3/id = 3
+popup/item_4/text = "1920x1080"
+popup/item_4/id = 4
+popup/item_5/text = "2560x1440"
+popup/item_5/id = 5
+popup/item_6/text = "3840x2160"
+popup/item_6/id = 6
+
+[node name="WindowModeLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="WindowModeButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MonitorLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Monitor"
+
+[node name="MonitorButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VsyncLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="VsyncButton" type="CheckButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Sidebar" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Header/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowSizeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_size_button_item_selected"]
+[connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowModeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_mode_button_item_selected"]
+[connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/MonitorButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_monitor_button_item_selected"]
+[connection signal="toggled" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/VsyncButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_vsync_button_toggled"]

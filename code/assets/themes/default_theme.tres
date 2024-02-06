@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8o2pfc4b2c40"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b8o2pfc4b2c40"]
 
 [ext_resource type="FontFile" uid="uid://cr23pjkcnn6bk" path="res://assets/fonts/bahnschrift.TTF" id="1_tye7j"]
 
@@ -9,8 +9,55 @@ content_margin_right = 25.0
 content_margin_bottom = 10.0
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnmbn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kqnp"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnhpb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hey4j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xt55"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmt70"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt3tl"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glvit"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no57m"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+
 [resource]
 default_font = ExtResource("1_tye7j")
 default_font_size = 24
 Button/styles/normal = SubResource("StyleBoxFlat_jblcr")
+CheckBox/styles/focus = SubResource("StyleBoxFlat_jnmbn")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_3kqnp")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_tnhpb")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_hey4j")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_1xt55")
+GridContainer/constants/h_separation = 32
+GridContainer/constants/v_separation = 12
+OptionButton/styles/hover = SubResource("StyleBoxFlat_lmt70")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_xt3tl")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_glvit")
+TabContainer/constants/side_margin = 0
+TabContainer/styles/panel = SubResource("StyleBoxFlat_no57m")
 VBoxContainer/constants/separation = 16

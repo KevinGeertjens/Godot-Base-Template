@@ -17,15 +17,14 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 ChangeScene="*res://autoload/change_scene.gd"
+GraphicsSettings="*res://autoload/graphics_settings.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/size/resizable=false
-window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/stretch/mode="canvas_items"
 
 [file_customization]
 

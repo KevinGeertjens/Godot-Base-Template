@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bbjn6b5dbkl45" path="res://scenes/menus/settings/settings_menu.tscn" id="2_wp41h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4fc0"]
-bg_color = Color(0, 0, 0, 0.392157)
+bg_color = Color(0, 0, 0, 0.431373)
 
 [node name="PauseMenu" type="PanelContainer"]
 anchors_preset = 15
