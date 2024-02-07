@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 ChangeScene="*res://autoload/change_scene.gd"
 GraphicsSettings="*res://autoload/graphics_settings.gd"
+AudioSettings="*res://autoload/audio_settings.gd"
 
 [display]
 
