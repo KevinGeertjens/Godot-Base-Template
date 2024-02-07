@@ -90,7 +90,9 @@ func set_window_mode(window_mode: int):
 
 	currentSettings["window_mode"] = window_mode
 	_save_settings()
+	
 	DisplayServer.window_set_current_screen(currentSettings["monitor"])
+	set_window_size(currentSettings['window_size'])
 
 func set_vsync(vsync: bool):
 	var vsyncValue = {

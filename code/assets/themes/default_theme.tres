@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b8o2pfc4b2c40"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b8o2pfc4b2c40"]
 
 [ext_resource type="FontFile" uid="uid://cr23pjkcnn6bk" path="res://assets/fonts/bahnschrift.TTF" id="1_tye7j"]
 
@@ -44,6 +44,13 @@ bg_color = Color(0.2, 0.2, 0.2, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no57m"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysb56"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+
 [resource]
 default_font = ExtResource("1_tye7j")
 default_font_size = 24
@@ -60,4 +67,5 @@ OptionButton/styles/normal = SubResource("StyleBoxFlat_xt3tl")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_glvit")
 TabContainer/constants/side_margin = 0
 TabContainer/styles/panel = SubResource("StyleBoxFlat_no57m")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_ysb56")
 VBoxContainer/constants/separation = 16

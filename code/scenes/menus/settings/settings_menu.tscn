@@ -65,6 +65,7 @@ layout_mode = 2
 
 [node name="Tabs" type="TabContainer" parent="Margin/PanelContainer/Margin/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Graphics" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
 layout_mode = 2
@@ -125,11 +126,24 @@ text = "Vsync"
 [node name="VsyncButton" type="CheckButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
 
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Sidebar" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer"]
 layout_mode = 2
+
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/Sidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DefaultButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/Sidebar"]
+layout_mode = 2
+text = "Default Settings"
 
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Header/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowSizeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_size_button_item_selected"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowModeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_mode_button_item_selected"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/MonitorButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_monitor_button_item_selected"]
 [connection signal="toggled" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/VsyncButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_vsync_button_toggled"]
+[connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/Sidebar/DefaultButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_default_button_pressed"]

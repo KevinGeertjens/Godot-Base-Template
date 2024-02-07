@@ -87,3 +87,7 @@ func _on_monitor_button_item_selected(index):
 func _on_vsync_button_toggled(toggled_on):
 	GraphicsSettings.set_vsync(toggled_on)
 	_update_buttons()
+
+func _on_default_button_pressed():
+	GraphicsSettings.apply_default_settings()
+	_update_buttons()
