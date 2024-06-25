@@ -17,6 +17,10 @@ func _update_sliders():
 		masterVolumeSlider.set_value_no_signal(settings["masterVolume"])
 		musicVolumeSlider.set_value_no_signal(settings["musicVolume"])
 		sfxVolumeSlider.set_value_no_signal(settings["sfxVolume"])
+		
+		masterVolumeVal.text = str(settings["masterVolume"])
+		musicVolumeVal.text = str(settings["musicVolume"])
+		sfxVolumeVal.text = str(settings["sfxVolume"])
 
 func _on_master_volume_slider_value_changed(value):
 	AudioSettings.set_master_volume(value)
