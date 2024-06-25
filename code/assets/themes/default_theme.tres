@@ -17,6 +17,18 @@ bg_color = Color(0.117647, 0.117647, 0.117647, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnhpb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hey4j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

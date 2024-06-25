@@ -51,7 +51,9 @@ text = "Quit to Desktop"
 visible = false
 layout_mode = 2
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/QuitMainMenuButton" to="." method="_on_quit_main_menu_button_pressed"]
 [connection signal="pressed" from="Center/PanelContainer/MarginContainer/Buttons/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]
+[connection signal="visibility_changed" from="SettingsMenu" to="." method="_on_settings_menu_visibility_changed"]

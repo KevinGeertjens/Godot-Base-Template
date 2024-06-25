@@ -53,3 +53,4 @@ layout_mode = 2
 [connection signal="pressed" from="Margin/VBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="visibility_changed" from="SettingsMenu" to="." method="_on_settings_menu_visibility_changed"]

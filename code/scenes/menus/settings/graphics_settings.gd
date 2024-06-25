@@ -24,7 +24,6 @@ func _ready():
 	_update_buttons()
 
 func _update_buttons():
-	#Updates all buttons' values
 	_update_window_size_button()
 	_update_window_mode_button()
 	_update_vsync_button()

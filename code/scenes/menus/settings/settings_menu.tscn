@@ -67,7 +67,6 @@ layout_mode = 2
 [node name="Tabs" type="TabContainer" parent="Margin/PanelContainer/Margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
 
 [node name="Graphics" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
 visible = false
@@ -91,6 +90,10 @@ text = "Window Size"
 
 [node name="WindowSizeButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../WindowModeButton")
+focus_next = NodePath("../WindowModeButton")
+focus_previous = NodePath("../../..")
 item_count = 7
 selected = 0
 popup/item_0/text = "640x360"
@@ -114,6 +117,11 @@ text = "Window Mode"
 
 [node name="WindowModeButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../WindowSizeButton")
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../MonitorButton")
+focus_next = NodePath("../MonitorButton")
+focus_previous = NodePath("../WindowSizeButton")
 
 [node name="MonitorLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -121,6 +129,11 @@ text = "Monitor"
 
 [node name="MonitorButton" type="OptionButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../WindowModeButton")
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../VsyncButton")
+focus_next = NodePath("../VsyncButton")
+focus_previous = NodePath("../WindowModeButton")
 
 [node name="VsyncLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -128,6 +141,11 @@ text = "Vsync"
 
 [node name="VsyncButton" type="CheckButton" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../MonitorButton")
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../../Sidebar/DefaultButton")
+focus_next = NodePath("../../Sidebar/DefaultButton")
+focus_previous = NodePath("../MonitorButton")
 
 [node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer"]
 layout_mode = 2
@@ -142,6 +160,9 @@ size_flags_vertical = 3
 
 [node name="DefaultButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/Sidebar"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../GridContainer/VsyncButton")
+focus_neighbor_top = NodePath("../../GridContainer/VsyncButton")
+focus_previous = NodePath("../../GridContainer/VsyncButton")
 text = "Default Settings"
 
 [node name="Audio" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
@@ -168,6 +189,9 @@ text = "Master Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../MusicVolumeSlider")
+focus_next = NodePath("../MusicVolumeSlider")
 
 [node name="MasterVolumeVal" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -184,6 +208,11 @@ text = "Music Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_top = NodePath("../MasterVolumeSlider")
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../SfxVolumeSlider")
+focus_next = NodePath("../SfxVolumeVal")
+focus_previous = NodePath("../MasterVolumeSlider")
 
 [node name="MusicVolumeVal" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -200,6 +229,11 @@ text = "Sound Effects Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_top = NodePath("../MusicVolumeSlider")
+focus_neighbor_right = NodePath("../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../../Sidebar/DefaultButton")
+focus_next = NodePath("../../Sidebar/DefaultButton")
+focus_previous = NodePath("../MusicVolumeSlider")
 
 [node name="SfxVolumeVal" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -222,8 +256,12 @@ size_flags_vertical = 3
 
 [node name="DefaultButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/Sidebar"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../GridContainer/SfxVolumeSlider")
+focus_neighbor_top = NodePath("../../GridContainer/SfxVolumeSlider")
+focus_previous = NodePath("../../GridContainer/SfxVolumeSlider")
 text = "Default Settings"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Header/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowSizeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_size_button_item_selected"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowModeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_mode_button_item_selected"]
