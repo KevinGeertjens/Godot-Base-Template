@@ -1,10 +1,9 @@
 extends PanelContainer
 
 @onready var settingsMenu = $SettingsMenu
-var playButton
+@onready var playButton = $Margin/VBoxContainer/Buttons/PlayButton
 
 func _ready():
-	playButton = $Margin/VBoxContainer/Buttons/PlayButton
 	playButton.grab_focus()
 
 func _on_play_button_pressed():

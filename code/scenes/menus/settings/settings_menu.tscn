@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbjn6b5dbkl45"]
+[gd_scene load_steps=10 format=3 uid="uid://bbjn6b5dbkl45"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings/settings_menu.gd" id="1_iul8f"]
 [ext_resource type="Script" path="res://scenes/menus/settings/graphics_settings.gd" id="2_m5edi"]
 [ext_resource type="Script" path="res://scenes/menus/settings/audio_settings.gd" id="3_v44jn"]
+[ext_resource type="Script" path="res://scenes/menus/settings/controls_settings.gd" id="4_h7w71"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5odnb"]
 bg_color = Color(0, 0, 0, 0)
@@ -12,6 +13,12 @@ bg_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0upi"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dvb"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5waj1"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
 
 [node name="SettingsMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -67,13 +74,15 @@ layout_mode = 2
 [node name="Tabs" type="TabContainer" parent="Margin/PanelContainer/Margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 2
 
 [node name="Graphics" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
+visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 script = ExtResource("2_m5edi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics"]
@@ -167,10 +176,10 @@ text = "Default Settings"
 [node name="Audio" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 script = ExtResource("3_v44jn")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio"]
@@ -259,6 +268,260 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../GridContainer/SfxVolumeSlider")
 focus_neighbor_top = NodePath("../../GridContainer/SfxVolumeSlider")
 focus_previous = NodePath("../../GridContainer/SfxVolumeSlider")
+text = "Default Settings"
+
+[node name="Controls" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+script = ExtResource("4_h7w71")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="Gameplay" type="PanelContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6dvb")
+
+[node name="PanelContainer" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+
+[node name="bindLabel1" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Binding 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bindLabel2" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Binding 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="walkUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Walk Up"
+
+[node name="walkUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../walkUpBinding2")
+focus_neighbor_bottom = NodePath("../walkDownBinding1")
+focus_next = NodePath("../walkUpBinding2")
+text = "Bind 1"
+
+[node name="walkUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../walkUpBinding1")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../walkDownBinding2")
+focus_next = NodePath("../walkDownBinding1")
+focus_previous = NodePath("../walkUpBinding1")
+text = "Bind 2"
+
+[node name="walkDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Walk Down"
+
+[node name="walkDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="walkDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="walkLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Walk Left"
+
+[node name="walkLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="walkLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="walkRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Walk Right"
+
+[node name="walkRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="walkRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Gameplay/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="Menus" type="PanelContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5waj1")
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="bindLabel1" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Binding 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bindLabel2" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Binding 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menuUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Up"
+
+[node name="menuUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="menuDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Down"
+
+[node name="menuDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="menuLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Left"
+
+[node name="menuLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="menuRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Right"
+
+[node name="menuRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="filler3" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="filler4" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="menuAcceptLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Accept"
+
+[node name="menuAcceptBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuAcceptBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="menuBackLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Menu Back"
+
+[node name="menuBackBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuBackBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="filler5" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="filler6" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="filler7" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="menuPauseLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Toggle Pause Menu"
+
+[node name="menuPauseBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 1"
+
+[node name="menuPauseBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Tabs/Menus/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Bind 2"
+
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sidebar" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Sidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DefaultButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Sidebar"]
+layout_mode = 2
 text = "Default Settings"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
