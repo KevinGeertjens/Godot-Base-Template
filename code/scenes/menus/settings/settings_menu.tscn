@@ -69,7 +69,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Graphics" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -166,6 +165,7 @@ focus_previous = NodePath("../../GridContainer/VsyncButton")
 text = "Default Settings"
 
 [node name="Audio" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
