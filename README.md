@@ -6,8 +6,33 @@ This code is freely available for anyone to make use of. I mainly created this t
 
 ## Features
 
-### Project Setup / Settings
-TODO
+### Video Settings
+Customizable video settings such as:
 
-### Customizable Settings
-TODO
+- Fullscreen / (Bordered) Window toggle
+- Window Size
+- Monitor to display on
+- Vsync toggle
+
+### Audio Settings
+Three commonly used audio buses with configurable volume sliders:
+
+- Master Volume
+- Music Volume
+- SFX Volume
+
+### Customizable Keybindings
+Fully customizable keybindings for gameplay and UI controls. This section is still under development.
+
+### Pause Menu
+In-game pause menu that pauses the game and displays a menu with:
+
+- Continue Game
+- Settings Menu
+- Quit to Main Menu
+- Quit to Desktop
+
+### Misc. Reusable Code
+Several pieces of misc. reusable code:
+
+- Scene switch script
