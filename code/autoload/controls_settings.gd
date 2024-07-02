@@ -14,7 +14,7 @@ class InputEventJoypadButtonConfig:
 		event.button_index = params["button_index"]
 	
 	func serialize():
-		return {"type": "JoypadButton", "params": {}}
+		return {"type": "JoypadButton", "params": {"button_index": event.button_index}}
 
 class InputEventJoypadMotionConfig:
 	var event = InputEventJoypadMotion.new()
@@ -37,18 +37,40 @@ func deserialize_input_event(input_event):
 
 const PATH = "user://controls_settings.json" # Path to settings file
 var DEFAULT_SETTINGS = {
-	"walk_left": [
+	"move_left": [
 		InputEventKeyConfig.new({"keycode": KEY_A}), 
 		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": -1.0})],
-	"walk_right": [
+	"move_right": [
 		InputEventKeyConfig.new({"keycode": KEY_D}), 
 		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": 1.0})],
-	"walk_up": [
+	"move_up": [
 		InputEventKeyConfig.new({"keycode": KEY_W}), 
 		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": 1.0})],
-	"walk_down": [
+	"move_down": [
 		InputEventKeyConfig.new({"keycode": KEY_S}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": -1.0})]
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": -1.0})],
+		
+	"ui_left": [
+		InputEventKeyConfig.new({"keycode": KEY_LEFT}), 
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": -1.0})],
+	"ui_right": [
+		InputEventKeyConfig.new({"keycode": KEY_RIGHT}), 
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": 1.0})],
+	"ui_up": [
+		InputEventKeyConfig.new({"keycode": KEY_UP}), 
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": 1.0})],
+	"ui_down": [
+		InputEventKeyConfig.new({"keycode": KEY_DOWN}), 
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": -1.0})],
+	"ui_accept": [
+		InputEventKeyConfig.new({"keycode": KEY_ENTER}), 
+		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_A})],
+	"ui_cancel": [
+		InputEventKeyConfig.new({"keycode": KEY_ESCAPE}), 
+		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_B})],
+	"ui_game_menu": [
+		InputEventKeyConfig.new({"keycode": KEY_ESCAPE}), 
+		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_START})],
 }
 
 var _currentSettings = DEFAULT_SETTINGS.duplicate()
@@ -74,10 +96,10 @@ func load_settings():
 			for idx in range(len(loaded_settings[action])):
 				loaded_settings[action][idx] = deserialize_input_event(loaded_settings[action][idx])
 		
-		print(InputMap.action_get_events("walk_left"))
-		print(InputMap.action_get_events("walk_right"))
-		print(InputMap.action_get_events("walk_up"))
-		print(InputMap.action_get_events("walk_down"))
+		#print(InputMap.action_get_events("walk_left"))
+		#print(InputMap.action_get_events("walk_right"))
+		#print(InputMap.action_get_events("walk_up"))
+		#print(InputMap.action_get_events("walk_down"))
 		return loaded_settings
 		
 	return null

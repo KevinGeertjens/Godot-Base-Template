@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbjn6b5dbkl45"]
+[gd_scene load_steps=9 format=3 uid="uid://bbjn6b5dbkl45"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings/settings_menu.gd" id="1_iul8f"]
 [ext_resource type="Script" path="res://scenes/menus/settings/graphics_settings.gd" id="2_m5edi"]
 [ext_resource type="Script" path="res://scenes/menus/settings/audio_settings.gd" id="3_v44jn"]
+[ext_resource type="Script" path="res://scenes/menus/settings/controls_settings.gd" id="4_v75ub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5odnb"]
 bg_color = Color(0, 0, 0, 0)
@@ -272,6 +273,7 @@ theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
+script = ExtResource("4_v75ub")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
 layout_mode = 2
@@ -288,232 +290,232 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="Gameplay" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer"]
+[node name="Options" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 17
 
-[node name="GameplayLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="GameplayLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Gameplay"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="Panel" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gdlmj")
 
-[node name="GridContainer" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="GridContainer" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 3
 
-[node name="filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 
-[node name="bindLabel1" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="bindLabel1" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Binding 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bindLabel2" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="bindLabel2" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Binding 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="walkUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Walk Up                            "
 
-[node name="walkUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
-focus_neighbor_right = NodePath("../walkUpBinding2")
-focus_neighbor_bottom = NodePath("../walkDownBinding1")
-focus_next = NodePath("../walkUpBinding2")
+focus_neighbor_right = NodePath("../moveUpBinding2")
+focus_neighbor_bottom = NodePath("../moveDownBinding1")
+focus_next = NodePath("../moveUpBinding2")
 text = "Bind 1"
 
-[node name="walkUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../walkUpBinding1")
+focus_neighbor_left = NodePath("../moveUpBinding1")
 focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
-focus_neighbor_bottom = NodePath("../walkDownBinding2")
-focus_next = NodePath("../walkDownBinding1")
-focus_previous = NodePath("../walkUpBinding1")
+focus_neighbor_bottom = NodePath("../moveDownBinding2")
+focus_next = NodePath("../moveDownBinding1")
+focus_previous = NodePath("../moveUpBinding1")
 text = "Bind 2"
 
-[node name="walkDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Walk Down"
 
-[node name="walkDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="walkDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="walkLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Walk Left"
 
-[node name="walkLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="walkLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="walkRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Walk Right"
 
-[node name="walkRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="walkRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer"]
+[node name="moveRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="MenusLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="MenusLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Menus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="Panel2" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gdlmj")
 
-[node name="GridContainer2" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay"]
+[node name="GridContainer2" type="GridContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 3
 
-[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="Filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="Filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="Filler3" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="Filler3" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="menuUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiUpLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Up"
 
-[node name="menuUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="menuDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Down"
 
-[node name="menuDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="menuLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Left"
 
-[node name="menuLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="menuRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Right"
 
-[node name="menuRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="filler3" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler3" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="filler4" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler4" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="menuAcceptLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiAcceptLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Accept"
 
-[node name="menuAcceptBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiAcceptBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuAcceptBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiAcceptBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="menuBackLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiCancelLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Menu Back"
 
-[node name="menuBackBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiCancelBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuBackBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiCancelBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
-[node name="filler5" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler5" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="filler6" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler6" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="filler7" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="filler7" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 
-[node name="menuPauseLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiGameMenuLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Toggle Pause Menu"
 
-[node name="menuPauseBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiGameMenuBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 1"
 
-[node name="menuPauseBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Gameplay/GridContainer2"]
+[node name="uiGameMenuBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
 text = "Bind 2"
 
