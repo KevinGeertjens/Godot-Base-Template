@@ -7,6 +7,20 @@ class InputEventKeyConfig:
 	
 	func serialize():
 		return {"type": "KeyboardButton", "params": {"keycode": event.keycode}}
+	
+	func as_text():
+		return event.as_text()
+
+class InputEventMouseButtonConfig:
+	var event = InputEventMouseButton.new()
+	func _init(params):
+		event.button_index = params["button_index"]
+	
+	func serialize():
+		return {"type": "MouseButton", "params": {"button_index": event.button_index}}
+	
+	func as_text():
+		return event.as_text()
 
 class InputEventJoypadButtonConfig:
 	var event = InputEventJoypadButton.new()
@@ -15,6 +29,13 @@ class InputEventJoypadButtonConfig:
 	
 	func serialize():
 		return {"type": "JoypadButton", "params": {"button_index": event.button_index}}
+	
+	func as_text():
+		var event_text = event.as_text()
+		var return_text = ""
+		
+		return_text = event_text.split("(")[0].strip_edges()
+		return return_text
 
 class InputEventJoypadMotionConfig:
 	var event = InputEventJoypadMotion.new()
@@ -24,10 +45,35 @@ class InputEventJoypadMotionConfig:
 	
 	func serialize():
 		return {"type": "JoypadMotion", "params": {"axis": event.axis, "value": event.axis_value}}
+	
+	func as_text():
+		var event_text = event.as_text().to_lower()
+		var return_text = ""
+		
+		if "left stick" in event_text:
+			return_text += "Left Stick "
+		else:
+			return_text += "Right Stick "
+		
+		var axis = event_text.findn("axis", event_text.find("axis") + 1) # Find second occurence of "axis"
+		var val = float(event_text.substr(len(event_text) - 5, len(event_text)))
+		var direction = "undefined"
+		if event_text[axis - 2] == "x":
+			direction = "Left"
+			if val > 0:
+				direction = "Right"
+		if event_text[axis - 2] == "y":
+			direction = "Down"
+			if val > 0:
+				direction = "Up"
+		
+		return_text += direction
+		return return_text
 
-func deserialize_input_event(input_event):
+func deserialize(input_event):
 	var mapping = {
 		"KeyboardButton": InputEventKeyConfig,
+		"MouseButton": InputEventMouseButtonConfig,
 		"JoypadButton": InputEventJoypadButtonConfig,
 		"JoypadMotion": InputEventJoypadMotionConfig
 	}
@@ -35,7 +81,6 @@ func deserialize_input_event(input_event):
 	var new_input_event = mapping[input_event["type"]].new(input_event["params"])
 	return new_input_event
 
-const PATH = "user://controls_settings.json" # Path to settings file
 var DEFAULT_SETTINGS = {
 	"move_left": [
 		InputEventKeyConfig.new({"keycode": KEY_A}), 
@@ -72,57 +117,3 @@ var DEFAULT_SETTINGS = {
 		InputEventKeyConfig.new({"keycode": KEY_ESCAPE}), 
 		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_START})],
 }
-
-var _currentSettings = DEFAULT_SETTINGS.duplicate()
-
-func _ready():
-	# Try to load settings from file and apply them, otherwise set to default
-	var loadedSettings = load_settings()
-	if loadedSettings == null:
-		apply_default_settings()
-	else:
-		apply_settings(loadedSettings)
-
-func load_settings():
-	# Returns settings saved in .json file, or null if an error occurred
-	if !FileAccess.file_exists(PATH):
-		return
-		
-	var file = FileAccess.open(PATH, FileAccess.READ)
-	if file != null:
-		var json_string = file.get_as_text()
-		var loaded_settings = JSON.parse_string(json_string)
-		for action in loaded_settings:
-			for idx in range(len(loaded_settings[action])):
-				loaded_settings[action][idx] = deserialize_input_event(loaded_settings[action][idx])
-		
-		#print(InputMap.action_get_events("walk_left"))
-		#print(InputMap.action_get_events("walk_right"))
-		#print(InputMap.action_get_events("walk_up"))
-		#print(InputMap.action_get_events("walk_down"))
-		return loaded_settings
-		
-	return null
-
-func _save_settings(newSettings: Dictionary = _currentSettings):
-	#Saves the given settings to the .json file
-	var serialized_settings = newSettings
-	for action in serialized_settings:
-		for idx in range(len(serialized_settings[action])):
-			serialized_settings[action][idx] = serialized_settings[action][idx].serialize()
-	
-	var json_string = JSON.stringify(serialized_settings)
-	var file = FileAccess.open(PATH, FileAccess.WRITE)
-	file.store_string(json_string)
-	file.close()
-
-func apply_settings(newSettings: Dictionary):
-	for action in newSettings:
-		InputMap.action_erase_events(action)
-		for input in newSettings[action]:
-			InputMap.action_add_event(action, input.event)
-	
-	_save_settings(newSettings)
-
-func apply_default_settings():
-	apply_settings(DEFAULT_SETTINGS)

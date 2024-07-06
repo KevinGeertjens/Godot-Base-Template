@@ -34,8 +34,7 @@ func _update_bindings():
 	var settings = ControlsSettings.load_settings()
 	if settings != null:
 		for action in settings:
-			print(action)
 			for i in range(len(settings[action])):
 				var input = settings[action][i]
-				actionMappings[action][i].text = input.event.as_text()
+				actionMappings[action][i].text = input.as_text()
 
