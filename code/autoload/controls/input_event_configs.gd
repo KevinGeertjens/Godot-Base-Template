@@ -70,16 +70,12 @@ class InputEventJoypadMotionConfig:
 		return_text += direction
 		return return_text
 
-func deserialize(input_event):
-	var mapping = {
+var mapping = {
 		"KeyboardButton": InputEventKeyConfig,
 		"MouseButton": InputEventMouseButtonConfig,
 		"JoypadButton": InputEventJoypadButtonConfig,
 		"JoypadMotion": InputEventJoypadMotionConfig
 	}
-	
-	var new_input_event = mapping[input_event["type"]].new(input_event["params"])
-	return new_input_event
 
 var DEFAULT_SETTINGS = {
 	"move_left": [
@@ -117,3 +113,21 @@ var DEFAULT_SETTINGS = {
 		InputEventKeyConfig.new({"keycode": KEY_ESCAPE}), 
 		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_START})],
 }
+
+func deserialize(input_event):	
+	var new_input_event = mapping[input_event["type"]].new(input_event["params"])
+	return new_input_event
+
+func event_to_config(event):	
+	var config = null
+	
+	if event is InputEventKey:
+		config = InputEventKeyConfig.new({"keycode": event.keycode})
+	if event is InputEventMouseButton:
+		config = InputEventMouseButtonConfig.new({"button_index": event.button_index})
+	if event is InputEventJoypadButton:
+		config = InputEventJoypadButtonConfig.new({"button_index": event.button_index})
+	if event is InputEventJoypadMotion:
+		config = InputEventJoypadMotionConfig.new({"axis": event.axis, "axis_value": event.axis_value})
+	
+	return config

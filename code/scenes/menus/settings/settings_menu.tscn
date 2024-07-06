@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbjn6b5dbkl45"]
+[gd_scene load_steps=11 format=3 uid="uid://bbjn6b5dbkl45"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings/settings_menu.gd" id="1_iul8f"]
 [ext_resource type="Script" path="res://scenes/menus/settings/graphics_settings.gd" id="2_m5edi"]
 [ext_resource type="Script" path="res://scenes/menus/settings/audio_settings.gd" id="3_v44jn"]
 [ext_resource type="Script" path="res://scenes/menus/settings/controls_settings.gd" id="4_v75ub"]
+[ext_resource type="Script" path="res://scenes/menus/settings/binding_change_popup.gd" id="5_14e76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5odnb"]
 bg_color = Color(0, 0, 0, 0)
@@ -16,6 +17,9 @@ bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdlmj"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ee1"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="SettingsMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -538,6 +542,37 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Default Settings"
 
+[node name="BindingChangePopup" type="PopupPanel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
+title = "Change Binding"
+initial_position = 4
+size = Vector2i(364, 122)
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7ee1")
+script = ExtResource("5_14e76")
+
+[node name="Margin" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup"]
+offset_right = 364.0
+offset_bottom = 122.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CenterContainer" type="CenterContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin/CenterContainer"]
+layout_mode = 2
+
+[node name="SelectedAction" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Change binding for: undefined"
+horizontal_alignment = 1
+
+[node name="WatingForInput" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Waiting for input..."
+horizontal_alignment = 1
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Header/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="item_selected" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics/HBoxContainer/GridContainer/WindowSizeButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Graphics" method="_on_window_size_button_item_selected"]
@@ -549,3 +584,5 @@ text = "Default Settings"
 [connection signal="value_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer/MusicVolumeSlider" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer/SfxVolumeSlider" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/Sidebar/DefaultButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_default_button_pressed"]
+[connection signal="about_to_popup" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" method="_on_about_to_popup"]
+[connection signal="visibility_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_binding_change_popup_visibility_changed"]

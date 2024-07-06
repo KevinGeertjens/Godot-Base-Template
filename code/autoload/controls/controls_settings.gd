@@ -1,7 +1,7 @@
 extends Node
 
 const PATH = "user://controls_settings.json" # Path to settings file
-var _currentSettings = InputEventConfigs.DEFAULT_SETTINGS.duplicate()
+var currentSettings = InputEventConfigs.DEFAULT_SETTINGS.duplicate()
 
 func _ready():
 	# Try to load settings from file and apply them, otherwise set to default
@@ -24,30 +24,30 @@ func load_settings():
 			for idx in range(len(loaded_settings[action])):
 				loaded_settings[action][idx] = InputEventConfigs.deserialize(loaded_settings[action][idx])
 		
-		#print(InputMap.action_get_events("walk_left"))
-		#print(InputMap.action_get_events("walk_right"))
-		#print(InputMap.action_get_events("walk_up"))
-		#print(InputMap.action_get_events("walk_down"))
 		return loaded_settings
 		
 	return null
 
-func _save_settings(newSettings: Dictionary = _currentSettings):
+func _save_settings(newSettings: Dictionary = currentSettings):
 	#Saves the given settings to the .json file
 	var serialized_settings = newSettings
 	for action in serialized_settings:
 		for idx in range(len(serialized_settings[action])):
-			serialized_settings[action][idx] = serialized_settings[action][idx].serialize()
+			var input = serialized_settings[action][idx]
+			if not (input is Dictionary):
+				serialized_settings[action][idx] = serialized_settings[action][idx].serialize()
 	
 	var json_string = JSON.stringify(serialized_settings)
 	var file = FileAccess.open(PATH, FileAccess.WRITE)
 	file.store_string(json_string)
 	file.close()
 
-func apply_settings(newSettings: Dictionary):
+func apply_settings(newSettings):
 	for action in newSettings:
 		InputMap.action_erase_events(action)
 		for input in newSettings[action]:
+			if input is Dictionary:
+				input = InputEventConfigs.deserialize(input)
 			InputMap.action_add_event(action, input.event)
 	
 	_save_settings(newSettings)

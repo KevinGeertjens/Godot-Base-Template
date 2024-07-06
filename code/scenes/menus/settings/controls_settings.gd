@@ -2,9 +2,14 @@ extends MarginContainer
 
 @onready var gameplayOptions = $HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer
 @onready var menuOptions = $HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2
-var actionMappings = {}
+@onready var bindingChangePopup = $BindingChangePopup
 
-func snake_to_camel_case(snake_str):
+var actionMappings = {}
+var actions = ["move_left", "move_right", "move_up", "move_down",
+			   "ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel", "ui_game_menu"]
+var mappingInitialized = false
+
+func _snake_to_camel_case(snake_str):
 	var parts = snake_str.split("_")
 	var camel_case_str = parts[0].to_lower()
 	for i in range(1, parts.size()):
@@ -12,13 +17,10 @@ func snake_to_camel_case(snake_str):
 	
 	return camel_case_str
 
-func _ready():
-	var actions = ["move_left", "move_right", "move_up", "move_down",
-				   "ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel", "ui_game_menu"]
-	
+func _ready():	
 	for action in actions:
 		actionMappings[action] = []
-		var base_name = snake_to_camel_case(action)
+		var base_name = _snake_to_camel_case(action)
 		var parentControl = gameplayOptions
 		if "ui" in action:
 			parentControl = menuOptions
@@ -28,13 +30,35 @@ func _ready():
 			var node = parentControl.get_node(control_name)
 			actionMappings[action].append(node)
 	
+	mappingInitialized = true
+	
 	_update_bindings()
+	_connect_buttons_to_popup()
 
 func _update_bindings():
 	var settings = ControlsSettings.load_settings()
 	if settings != null:
 		for action in settings:
-			for i in range(len(settings[action])):
-				var input = settings[action][i]
-				actionMappings[action][i].text = input.as_text()
+			if action in actionMappings:
+				for i in range(len(settings[action])):
+					var input = settings[action][i]
+					actionMappings[action][i].text = input.as_text()
 
+func _connect_buttons_to_popup():
+	# Connect all binding buttons to the BindingChangePopup
+	for action in actions:
+		for i in range(2):
+			actionMappings[action][i].connect("pressed", _on_binding_button_pressed.bind(action, i))
+
+func _on_binding_button_pressed(action, index):
+	bindingChangePopup.selectedAction = action
+	bindingChangePopup.index = index
+	bindingChangePopup.popup()
+
+func _on_binding_change_popup_visibility_changed():
+	_update_bindings()
+	
+	for action in actions:
+		for i in range(2):
+			if action in actionMappings:
+				actionMappings[action][i].disabled = bindingChangePopup.visible
