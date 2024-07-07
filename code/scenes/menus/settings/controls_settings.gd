@@ -3,6 +3,7 @@ extends MarginContainer
 @onready var gameplayOptions = $HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer
 @onready var menuOptions = $HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2
 @onready var bindingChangePopup = $BindingChangePopup
+@onready var scrollContainer = $HBoxContainer/ScrollContainer
 
 var actionMappings = {}
 var actions = ["move_left", "move_right", "move_up", "move_down",
@@ -62,3 +63,9 @@ func _on_binding_change_popup_visibility_changed():
 		for i in range(2):
 			if action in actionMappings:
 				actionMappings[action][i].disabled = bindingChangePopup.visible
+
+func _on_move_up_binding_1_focus_entered():
+	scrollContainer.scroll_vertical = 0
+
+func _on_move_up_binding_2_focus_entered():
+	scrollContainer.scroll_vertical = 0

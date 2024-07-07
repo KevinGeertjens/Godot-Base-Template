@@ -41,10 +41,10 @@ class InputEventJoypadMotionConfig:
 	var event = InputEventJoypadMotion.new()
 	func _init(params):
 		event.axis = params["axis"]
-		event.axis_value = params["value"]
+		event.axis_value = params["axis_value"]
 	
 	func serialize():
-		return {"type": "JoypadMotion", "params": {"axis": event.axis, "value": event.axis_value}}
+		return {"type": "JoypadMotion", "params": {"axis": event.axis, "axis_value": event.axis_value}}
 	
 	func as_text():
 		var event_text = event.as_text().to_lower()
@@ -63,9 +63,9 @@ class InputEventJoypadMotionConfig:
 			if val > 0:
 				direction = "Right"
 		if event_text[axis - 2] == "y":
-			direction = "Down"
+			direction = "Up"
 			if val > 0:
-				direction = "Up"
+				direction = "Down"
 		
 		return_text += direction
 		return return_text
@@ -80,29 +80,29 @@ var mapping = {
 var DEFAULT_SETTINGS = {
 	"move_left": [
 		InputEventKeyConfig.new({"keycode": KEY_A}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": -1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "axis_value": -1.0})],
 	"move_right": [
 		InputEventKeyConfig.new({"keycode": KEY_D}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": 1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "axis_value": 1.0})],
 	"move_up": [
 		InputEventKeyConfig.new({"keycode": KEY_W}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": 1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "axis_value": -1.0})],
 	"move_down": [
 		InputEventKeyConfig.new({"keycode": KEY_S}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": -1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "axis_value": 1.0})],
 		
 	"ui_left": [
 		InputEventKeyConfig.new({"keycode": KEY_LEFT}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": -1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "axis_value": -1.0})],
 	"ui_right": [
 		InputEventKeyConfig.new({"keycode": KEY_RIGHT}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "value": 1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_X, "axis_value": 1.0})],
 	"ui_up": [
 		InputEventKeyConfig.new({"keycode": KEY_UP}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": 1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "axis_value": -1.0})],
 	"ui_down": [
 		InputEventKeyConfig.new({"keycode": KEY_DOWN}), 
-		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "value": -1.0})],
+		InputEventJoypadMotionConfig.new({"axis": JOY_AXIS_LEFT_Y, "axis_value": 1.0})],
 	"ui_accept": [
 		InputEventKeyConfig.new({"keycode": KEY_ENTER}), 
 		InputEventJoypadButtonConfig.new({"button_index": JOY_BUTTON_A})],

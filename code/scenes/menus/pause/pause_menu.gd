@@ -5,7 +5,7 @@ extends PanelContainer
 
 func _on_continue_button_pressed():
 	get_tree().paused = false
-	self.visible = false
+	visible = false
 
 func _on_settings_button_pressed():
 	settingsMenu.visible = !settingsMenu.visible

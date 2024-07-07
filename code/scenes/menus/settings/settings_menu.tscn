@@ -285,6 +285,8 @@ theme_override_constants/separation = 75
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
 layout_mode = 2
+follow_focus = true
+scroll_vertical = 329
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer"]
@@ -358,10 +360,21 @@ text = "Walk Down"
 
 [node name="moveDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../moveUpBinding1")
+focus_neighbor_right = NodePath("../moveDownBinding2")
+focus_neighbor_bottom = NodePath("../moveLeftBinding1")
+focus_next = NodePath("../moveDownBinding2")
+focus_previous = NodePath("../moveUpBinding2")
 text = "Bind 1"
 
 [node name="moveDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../moveDownBinding1")
+focus_neighbor_top = NodePath("../moveUpBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../moveLeftBinding2")
+focus_next = NodePath("../moveLeftBinding1")
+focus_previous = NodePath("../moveDownBinding1")
 text = "Bind 2"
 
 [node name="moveLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
@@ -370,10 +383,21 @@ text = "Walk Left"
 
 [node name="moveLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../moveDownBinding1")
+focus_neighbor_right = NodePath("../moveLeftBinding2")
+focus_neighbor_bottom = NodePath("../moveRightBinding1")
+focus_next = NodePath("../moveLeftBinding2")
+focus_previous = NodePath("../moveDownBinding2")
 text = "Bind 1"
 
 [node name="moveLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../moveLeftBinding1")
+focus_neighbor_top = NodePath("../moveDownBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../moveRightBinding2")
+focus_next = NodePath("../moveRightBinding1")
+focus_previous = NodePath("../moveLeftBinding1")
 text = "Bind 2"
 
 [node name="moveRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
@@ -382,10 +406,21 @@ text = "Walk Right"
 
 [node name="moveRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../moveLeftBinding1")
+focus_neighbor_right = NodePath("../moveRightBinding2")
+focus_neighbor_bottom = NodePath("../../GridContainer2/uiUpBinding1")
+focus_next = NodePath("../moveRightBinding2")
+focus_previous = NodePath("../moveLeftBinding2")
 text = "Bind 1"
 
 [node name="moveRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../moveRightBinding1")
+focus_neighbor_top = NodePath("../moveLeftBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../../GridContainer2/uiUpBinding2")
+focus_next = NodePath("../../GridContainer2/uiUpBinding1")
+focus_previous = NodePath("../moveRightBinding1")
 text = "Bind 2"
 
 [node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options"]
@@ -425,10 +460,18 @@ text = "Menu Up"
 
 [node name="uiUpBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../GridContainer/moveRightBinding1")
+focus_neighbor_right = NodePath("../uiUpBinding2")
+focus_neighbor_bottom = NodePath("../uiDownBinding1")
+focus_next = NodePath("../uiUpBinding2")
+focus_previous = NodePath("../../GridContainer/moveRightBinding2")
 text = "Bind 1"
 
 [node name="uiUpBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiUpBinding1")
+focus_neighbor_top = NodePath("../../GridContainer/moveRightBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
 text = "Bind 2"
 
 [node name="uiDownLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -437,10 +480,21 @@ text = "Menu Down"
 
 [node name="uiDownBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiUpBinding1")
+focus_neighbor_right = NodePath("../uiDownBinding2")
+focus_neighbor_bottom = NodePath("../uiLeftBinding1")
+focus_next = NodePath("../uiDownBinding2")
+focus_previous = NodePath("../uiUpBinding2")
 text = "Bind 1"
 
 [node name="uiDownBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiDownBinding1")
+focus_neighbor_top = NodePath("../uiUpBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../uiLeftBinding2")
+focus_next = NodePath("../uiLeftBinding1")
+focus_previous = NodePath("../uiDownBinding1")
 text = "Bind 2"
 
 [node name="uiLeftLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -449,10 +503,21 @@ text = "Menu Left"
 
 [node name="uiLeftBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiDownBinding1")
+focus_neighbor_right = NodePath("../uiLeftBinding2")
+focus_neighbor_bottom = NodePath("../uiRightBinding1")
+focus_next = NodePath("../uiLeftBinding2")
+focus_previous = NodePath("../uiDownBinding2")
 text = "Bind 1"
 
 [node name="uiLeftBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiLeftBinding1")
+focus_neighbor_top = NodePath("../uiDownBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../uiRightBinding2")
+focus_next = NodePath("../uiRightBinding1")
+focus_previous = NodePath("../uiLeftBinding1")
 text = "Bind 2"
 
 [node name="uiRightLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -461,10 +526,21 @@ text = "Menu Right"
 
 [node name="uiRightBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiLeftBinding1")
+focus_neighbor_right = NodePath("../uiRightBinding2")
+focus_neighbor_bottom = NodePath("../uiAcceptBinding1")
+focus_next = NodePath("../uiRightBinding2")
+focus_previous = NodePath("../uiLeftBinding2")
 text = "Bind 1"
 
 [node name="uiRightBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiRightBinding1")
+focus_neighbor_top = NodePath("../uiLeftBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../uiAcceptBinding2")
+focus_next = NodePath("../uiAcceptBinding1")
+focus_previous = NodePath("../uiRightBinding1")
 text = "Bind 2"
 
 [node name="filler2" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -483,10 +559,21 @@ text = "Menu Accept"
 
 [node name="uiAcceptBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiRightBinding1")
+focus_neighbor_right = NodePath("../uiAcceptBinding2")
+focus_neighbor_bottom = NodePath("../uiCancelBinding1")
+focus_next = NodePath("../uiAcceptBinding2")
+focus_previous = NodePath("../uiRightBinding2")
 text = "Bind 1"
 
 [node name="uiAcceptBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiAcceptBinding1")
+focus_neighbor_top = NodePath("../uiRightBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../uiCancelBinding2")
+focus_next = NodePath("../uiCancelBinding1")
+focus_previous = NodePath("../uiAcceptBinding1")
 text = "Bind 2"
 
 [node name="uiCancelLabel" type="Label" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -495,10 +582,21 @@ text = "Menu Back"
 
 [node name="uiCancelBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiAcceptBinding1")
+focus_neighbor_right = NodePath("../uiCancelBinding2")
+focus_neighbor_bottom = NodePath("../uiGameMenuBinding1")
+focus_next = NodePath("../uiCancelBinding2")
+focus_previous = NodePath("../uiAcceptBinding2")
 text = "Bind 1"
 
 [node name="uiCancelBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiCancelBinding1")
+focus_neighbor_top = NodePath("../uiAcceptBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_neighbor_bottom = NodePath("../uiGameMenuBinding2")
+focus_next = NodePath("../uiGameMenuBinding1")
+focus_previous = NodePath("../uiCancelBinding1")
 text = "Bind 2"
 
 [node name="filler5" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
@@ -517,15 +615,20 @@ text = "Toggle Pause Menu"
 
 [node name="uiGameMenuBinding1" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../uiCancelBinding1")
+focus_neighbor_right = NodePath("../uiGameMenuBinding2")
+focus_next = NodePath("../uiGameMenuBinding2")
+focus_previous = NodePath("../uiCancelBinding2")
 text = "Bind 1"
 
 [node name="uiGameMenuBinding2" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../uiGameMenuBinding1")
+focus_neighbor_top = NodePath("../uiCancelBinding2")
+focus_neighbor_right = NodePath("../../../../../Sidebar/DefaultButton")
+focus_next = NodePath("../../../../../Sidebar/DefaultButton")
+focus_previous = NodePath("../uiGameMenuBinding1")
 text = "Bind 2"
-
-[node name="Menus" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 35
 
 [node name="Filler" type="Control" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer"]
 layout_mode = 2
@@ -540,6 +643,9 @@ size_flags_vertical = 3
 
 [node name="DefaultButton" type="Button" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/Sidebar"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../ScrollContainer/MarginContainer/Options/GridContainer2/uiGameMenuBinding2")
+focus_neighbor_top = NodePath("../../ScrollContainer/MarginContainer/Options/GridContainer2/uiGameMenuBinding2")
+focus_previous = NodePath("../../ScrollContainer/MarginContainer/Options/GridContainer2/uiGameMenuBinding2")
 text = "Default Settings"
 
 [node name="BindingChangePopup" type="PopupPanel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
@@ -584,5 +690,7 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer/MusicVolumeSlider" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/GridContainer/SfxVolumeSlider" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/Sidebar/DefaultButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_default_button_pressed"]
+[connection signal="focus_entered" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer/moveUpBinding1" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_move_up_binding_1_focus_entered"]
+[connection signal="focus_entered" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer/moveUpBinding2" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_move_up_binding_2_focus_entered"]
 [connection signal="about_to_popup" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" method="_on_about_to_popup"]
 [connection signal="visibility_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_binding_change_popup_visibility_changed"]
