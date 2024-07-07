@@ -1,4 +1,4 @@
-extends PopupPanel
+extends Panel
 
 @onready var selectedActionLabel = $Margin/CenterContainer/VBoxContainer/SelectedAction
 var selectedAction = "undefined"
@@ -7,7 +7,7 @@ var index = 0
 var acceptedEvents = [InputEventKey.new(), InputEventMouseButton.new(), 
 					  InputEventJoypadButton.new(), InputEventJoypadMotion.new()]
 
-func _on_about_to_popup():
+func _on_visibility_changed():
 	var actionText = selectedAction.replace("_", " ")
 	var words = actionText.split(" ")
 	for i in range(words.size()):

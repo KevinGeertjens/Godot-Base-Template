@@ -18,7 +18,7 @@ bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdlmj"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7ee1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0lq2"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="SettingsMenu" type="PanelContainer"]
@@ -648,16 +648,17 @@ focus_neighbor_top = NodePath("../../ScrollContainer/MarginContainer/Options/Gri
 focus_previous = NodePath("../../ScrollContainer/MarginContainer/Options/GridContainer2/uiGameMenuBinding2")
 text = "Default Settings"
 
-[node name="BindingChangePopup" type="PopupPanel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
-title = "Change Binding"
-initial_position = 4
-size = Vector2i(364, 122)
-theme_override_styles/panel = SubResource("StyleBoxFlat_d7ee1")
+[node name="BindingChangePopup" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("5_14e76")
 
 [node name="Margin" type="MarginContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup"]
-offset_right = 364.0
-offset_bottom = 122.0
+layout_mode = 2
+offset_right = 1602.0
+offset_bottom = 636.0
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
@@ -665,6 +666,11 @@ theme_override_constants/margin_bottom = 24
 
 [node name="CenterContainer" type="CenterContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin"]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin/CenterContainer"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x0lq2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup/Margin/CenterContainer"]
 layout_mode = 2
@@ -692,5 +698,6 @@ horizontal_alignment = 1
 [connection signal="pressed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio/HBoxContainer/Sidebar/DefaultButton" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Audio" method="_on_default_button_pressed"]
 [connection signal="focus_entered" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer/moveUpBinding1" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_move_up_binding_1_focus_entered"]
 [connection signal="focus_entered" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/HBoxContainer/ScrollContainer/MarginContainer/Options/GridContainer/moveUpBinding2" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_move_up_binding_2_focus_entered"]
-[connection signal="about_to_popup" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" method="_on_about_to_popup"]
+[connection signal="visibility_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="." method="_on_binding_change_popup_visibility_changed"]
 [connection signal="visibility_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls" method="_on_binding_change_popup_visibility_changed"]
+[connection signal="visibility_changed" from="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" to="Margin/PanelContainer/Margin/VBoxContainer/Tabs/Controls/BindingChangePopup" method="_on_visibility_changed"]

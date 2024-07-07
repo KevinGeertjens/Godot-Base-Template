@@ -10,6 +10,9 @@ var actions = ["move_left", "move_right", "move_up", "move_down",
 			   "ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel", "ui_game_menu"]
 var mappingInitialized = false
 
+# N frames to disable input for to prevent bouncing from the bindingChangePopup
+var inputDebounce = 0 
+
 func _snake_to_camel_case(snake_str):
 	var parts = snake_str.split("_")
 	var camel_case_str = parts[0].to_lower()
@@ -36,6 +39,10 @@ func _ready():
 	_update_bindings()
 	_connect_buttons_to_popup()
 
+func _process(delta):
+	if inputDebounce > 0:
+		inputDebounce -= 1
+
 func _update_bindings():
 	var settings = ControlsSettings.load_settings()
 	if settings != null:
@@ -52,9 +59,10 @@ func _connect_buttons_to_popup():
 			actionMappings[action][i].connect("pressed", _on_binding_button_pressed.bind(action, i))
 
 func _on_binding_button_pressed(action, index):
-	bindingChangePopup.selectedAction = action
-	bindingChangePopup.index = index
-	bindingChangePopup.popup()
+	if inputDebounce <= 0:
+		bindingChangePopup.selectedAction = action
+		bindingChangePopup.index = index
+		bindingChangePopup.visible = true
 
 func _on_binding_change_popup_visibility_changed():
 	_update_bindings()
@@ -63,6 +71,9 @@ func _on_binding_change_popup_visibility_changed():
 		for i in range(2):
 			if action in actionMappings:
 				actionMappings[action][i].disabled = bindingChangePopup.visible
+	
+	if !bindingChangePopup.visible:
+		inputDebounce = 10
 
 func _on_move_up_binding_1_focus_entered():
 	scrollContainer.scroll_vertical = 0

@@ -131,3 +131,18 @@ func event_to_config(event):
 		config = InputEventJoypadMotionConfig.new({"axis": event.axis, "axis_value": event.axis_value})
 	
 	return config
+
+func is_same_config(config1, config2):
+	var same = false
+	
+	if config1 is InputEventKeyConfig && config2 is InputEventKeyConfig:
+		same = (config1.event.keycode == config2.event.keycode)
+	if config1 is InputEventMouseButtonConfig && config2 is InputEventMouseButtonConfig:
+		same = (config1.event.button_index == config2.event.button_index)
+	if config1 is InputEventJoypadButtonConfig && config2 is InputEventJoypadButtonConfig:
+		same = (config1.event.button_index == config2.event.button_index)
+	if config1 is InputEventJoypadMotionConfig && config2 is InputEventJoypadMotionConfig:
+		same = (config1.event.axis == config2.event.axis && 
+				config1.event.axis_value == config2.axis_value)
+	
+	return same
