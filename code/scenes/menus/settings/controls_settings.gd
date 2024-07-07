@@ -80,3 +80,7 @@ func _on_move_up_binding_1_focus_entered():
 
 func _on_move_up_binding_2_focus_entered():
 	scrollContainer.scroll_vertical = 0
+
+func _on_default_button_pressed():
+	ControlsSettings.apply_default_settings()
+	_update_bindings()
